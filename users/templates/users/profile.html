@@ -1,0 +1,37 @@
+{% extends "blog/base.html"%}
+{% load crispy_forms_tags %}
+{% block content%}
+    <div class="content-section">
+        <div class="media d-flex flex-column flex-md-row align-items-center">
+            <div id="image-preview" class="mr-md-3 mb-3 mb-md-0">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"></div>
+            <div class="ml-md-3 mt-3 mt-md-0">
+              <h2 class="account-heading ml-3">{{ user.first_name }}</h2>
+              <p class="text-muted" style="margin-bottom: 0%;"> #{{ user.username }}</p>
+              <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+    
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Update Info</legend>
+          {{ pi_form|crispy }}
+          <p class="text-muted">Upload and preview the image</p>
+          <br>
+          {{ u_form|crispy }}
+          {{ pa_form.media }}
+          {{ pa_form|crispy }}
+          
+      </fieldset>
+      <div class="form-group row justify-content-between ml-4">
+          <button class="col-2 btn btn-outline-info btn-outline-custom mt-4 mr-4" type="submit">
+              Update
+          </button>
+          <a href="{% url 'user-posts' user.username %}" class="col-2 btn btn-secondary mt-4 ml-4" > Cancel</a>
+      </div>
+    </form>
+    </div>
+
+    
+{% endblock content %}

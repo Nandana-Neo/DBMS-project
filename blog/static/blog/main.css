@@ -1,0 +1,235 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+  }
+  
+  ul {
+    margin: 0;
+  }
+  
+  
+  
+  .site-header .navbar-nav .nav-link {
+    color: #c6e1f0;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .navbar-nav{
+    justify-self: end;
+  }
+  .content-section,.about_content {
+    background: hsl(190, 23%, 95%);
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  /* article.content-section:hover{
+    background-color: rgba(111, 108, 100, 0.048);
+  } */
+
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+ 
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+#image-preview {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Background color for preview container */
+    border: 1px solid #ccc; /* Optional: Border for preview container */
+}
+
+#image-preview img {
+    width: 100%;
+    height: 100%;
+}
+
+#preview-info {
+    font-style: italic;
+    color: #888;
+}
+
+body{
+  background-color: #D3D9D4;
+}
+
+.btn-outline-custom{
+  color: #04bde2 !important;
+  font-weight:600 !important;
+  margin-left: 2px !important;
+  border-width: 2 !important;
+}
+.btn-outline-custom:hover{
+  background-color: #04bde2 !important;
+  color: white !important;
+  border-width: 2 !important;
+}
+.btn-outline-custom_1{
+  background-color: whitesmoke !important;
+}
+
+#calendar {
+  max-width: 440px;
+  width: 100%;
+  margin:2px;
+  padding : 0px;
+
+}
+.content-cal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+.fc-daygrid-event-dot {
+  background-color: red;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.fc td, .fc th {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.fc-toolbar-title {
+  font-size: 1.5em;
+}
+
+.fc-daygrid-day-number {
+  padding: 5px;
+}
+
+.fc-daygrid-day-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-today-button{
+  background-color: #004359 !important;
+}
+
+.fc-day-event {
+  background-color: #124e66 !important; /* Custom background color */
+  /* color: #333; Custom text color */
+}
+
+.fc-col-header-cell a {
+  text-decoration: none !important;
+}
+@media (max-width: 1400px)and (min-width: 1000px)  {
+  #calendar {
+      max-width: 300px; /* Adjust max-width for smaller screens */
+      width: 100%;
+      height: 400px;
+  }
+  
+  .fc-col-header-cell a span {
+    display: none; /* Hide all span elements inside .fc-day-header */
+  }
+
+  .fc-col-header-cell a  {
+    display: initial; /* Display the first letter of each day as abbreviation */
+  }
+
+  .fc-header-toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fc-toolbar-chunk{
+    display: flex;
+    flex-direction: column;
+  }
+  .fc-today-button{
+    padding: 0rem 0rem !important;
+    width :auto !important;
+    background-color: #004359 !important;
+  }
+  .fc-button-group{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0% !important;
+  }
+  
+}
+
+.fc-day a{
+  color: black !important;
+}
+
+.fc-day:hover{
+  background-color: #00687da6 !important;
+}
+
+.fc-day-today{
+  border: 2px solid #212A31 !important;
+  background-color: #00435900 !important;
+
+}
