@@ -16,7 +16,8 @@ class EventListView(ListView):
     model = Event
     template_name = 'events/event_list.html'
     context_object_name = 'events'
-    paginate_by = 5
+    paginate_by = 20
+    ordering = ['date']
 
 class EventDetailView(DetailView):
     model = Event
@@ -24,8 +25,9 @@ class EventDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         reg = False
-        if self.object.participants.filter(user=self.request.user).exists():
-            reg = True
+        if self.request.user.is_authenticated:
+            if self.object.participants.filter(user=self.request.user).exists():
+                reg = True
         context['reg'] = reg
         return context
 
@@ -73,9 +75,33 @@ def register_for_event(request, pk):
     
     return redirect('event-detail', pk=event.pk)    
 
-# class PostCreateView(LoginRequiredMixin, CreateView):
-#     model = Event
-#     fields = ['name', 'content']
-#     def form_valid(self, form): # overriding the default form method
-#         form.instance.author = self.request.user
-#         return super().form_valid(form) # default method
+class MarkAttendanceView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    model = EventParticipant
+    template_name = 'events/mark_attendance.html'
+    context_object_name = 'participants'
+
+    def get_queryset(self):
+        event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return EventParticipant.objects.filter(event=event)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])  # Add the event to context
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        participants = self.get_queryset()
+
+        # Update attendance for each participant
+        for participant in participants:
+            attended = request.POST.get(f'attended_{participant.id}', 'off') == 'on'
+            participant.attended = attended
+            participant.save()
+
+        return redirect('event-detail', pk=event.pk)
+
+    # Ensure only organizer can access
+    def test_func(self):
+        event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return self.request.user == event.organizer

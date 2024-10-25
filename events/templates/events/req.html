@@ -1,0 +1,22 @@
+
+<div class="row w-100 mt-2">
+    <div class="col-auto d-flex flex-column align-items-center">
+      <a href="{% url 'user-posts' post.organizer.username %}"><img class="rounded-circle article-img mb-2 " src="{{ post.organizer.profile.image.url }}" style="margin-right: 0%;"></a>
+      <div class="btn btn-outline-secondary btn-sm"> {{post.participants.count}} regs</div>
+             
+      </div>
+        <div class="col" style="padding: 0%;">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-posts' post.organizer.username %}">
+                        {{ post.organizer }}
+                    </a>
+                    <small class="text-muted">{{ post.date|date:"F d, Y" }}</small>
+                </div>
+                
+                <h2><a class="article-title" href="{% url 'event-detail' post.id %}">{{ post.name }}</a></h2>
+                <p class="article-content">{{ post.description|truncatechars:600|safe }}</p>
+                
+            </div>
+        </div>
+    </div>

@@ -1,5 +1,18 @@
 {% extends "blog/base.html"%}
 {% block content%}
+    
+<article class="media content-section d-flex justify-content-between align-items-center" >
+    <h3 class="d-flex align-items-center">
+      Add a New Event
+      
+    </h3>
+    <a href="{% url 'event-create' %}" class="ml-2 text-decoration-none" style="color: inherit;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-fill right" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+      </svg>
+    </a>
+  
+  </article>
     <article class="media content-section d-flex align-items-start" >
 
       <div class="row w-100 mt-2">
@@ -14,7 +27,7 @@
                 <div class="media-body">
                     <div class="article-metadata d-flex justify-content-between align-items-center">
                         <a class="mr-2" href="{% url 'user-posts' object.organizer.username %}">
-                            {{ object.organizer }}
+                            {{ object.organizer.first_name }}
                         </a>
                         <small class="text-muted">{{ object.date|date:"F d, Y" }}</small>
                         {% if object.organizer == user %}
@@ -47,36 +60,30 @@
                     </div>
                 </article>
                 <article class="media content-section" >
-                            <h2 class="article-content"> Registered Participants : {{ object.participants.count }}</h2>
-                            <div class="list-group">
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                                  <span>
-                                    First checkbox
-                                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    Second checkbox
-                                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                                  </span>
-                                </label>
-                                <label class="list-group-item d-flex gap-2">
-                                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                                  <span>
-                                    Third checkbox
-                                    <small class="d-block text-body-secondary">And we end with another snippet of text</small>
-                                  </span>
-                                </label>
-                              </div>
-            </article>
+                            <h3 class="article-content"> Registered Participants : {{ object.participants.count }}                          </h3>
+                            <a href="{% url 'attendance' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1" > Take attendance </a>
+                            
+                </article>
 
                         {% endif %}
                     {% else %}
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            <a class="ml-2" href="{% url 'login' %}">Login to Register for Event</a>
+                        </small>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </article>
                     {% endif %}
                     
-               
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
+                </ol>
+            </nav>
 
 {% endblock content %}

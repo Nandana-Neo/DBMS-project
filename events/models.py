@@ -18,6 +18,7 @@ class EventParticipant(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="participants")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='registered_events')
     registered_at = models.DateTimeField(auto_now_add=True)
+    attended = models.BooleanField(default=False)  # New field for attendance
 
     class Meta:
         unique_together = ('event', 'user')  # Each user can only participate once
