@@ -23,7 +23,7 @@ urlpatterns = [
     path('post/new/',PostCreateView.as_view(),name='post-create'),
     path('like/<int:pk>',LikeView,name='like_post'),
 
-    path('events/',TemplateView.as_view(template_name='blog/events.html'),name='events'),
+    # path('events/',TemplateView.as_view(template_name='blog/events.html'),name='events'),
 
     path('calendar/<str:date>/', get_posts_by_dateListView.as_view(), name='get_posts_by_date'),
     path('api/posts/',blogpost_list,name='blogpost-list')
