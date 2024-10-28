@@ -19,6 +19,45 @@ class EventListView(ListView):
     paginate_by = 20
     ordering = ['date']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = "Events"
+        context['title'] = title
+        return context
+
+class EventUserListView(ListView):
+    model = Event
+    template_name = 'events/event_list.html'
+    context_object_name = 'events'
+    paginate_by = 20
+    ordering = ['date']
+
+    def get_queryset(self):
+    # Filter events by the "organized_events" related field for the logged-in user
+        return self.model.objects.filter(organizer=self.request.user).order_by('date')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = "Events Organized"
+        context['title'] = title
+        return context
+    
+class EventRegListView(ListView):
+    model = Event
+    template_name = 'events/event_list.html'
+    context_object_name = 'events'
+    paginate_by = 20
+    ordering = ['date']
+
+    def get_queryset(self):
+        return Event.objects.filter(participants__user=self.request.user).order_by('date')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = "Events Registered"
+        context['title'] = title
+        return context
+
 class EventDetailView(DetailView):
     model = Event
 

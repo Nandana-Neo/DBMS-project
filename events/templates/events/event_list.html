@@ -3,8 +3,7 @@
     
     <article class="media content-section d-flex justify-content-between align-items-center" >
       <h2 class="d-flex align-items-center">
-        Events
-        
+        {{ title }}
       </h2>
       <a href="{% url 'event-create' %}" class="ml-2 text-decoration-none" style="color: inherit;">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-fill right" viewBox="0 0 16 16">
@@ -59,4 +58,12 @@
       {% endif %}
 
     {% endif %}
+    {% if title != "Events" %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+      </ol>
+    </nav>
+  {% endif %}
 {% endblock content %}
