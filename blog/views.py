@@ -170,7 +170,7 @@ def blogpost_list(request):
         })
     return JsonResponse(events, safe=False)
 
-class get_posts_by_dateListView(ListView):
+class get_posts_by_date(ListView):
     model = Post #Which model to query to get list
     template_name='blog/posts_by_date.html'   # <app> / <model>_<viewtype>.html
     context_object_name = 'posts' # object_name was by default object_list

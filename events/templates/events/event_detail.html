@@ -3,7 +3,7 @@
     
 <article class="media content-section d-flex justify-content-between align-items-center" >
     <h3 class="d-flex align-items-center">
-      Add a New Event
+      Events
       
     </h3>
     <a href="{% url 'event-create' %}" class="ml-2 text-decoration-none" style="color: inherit;">
@@ -80,7 +80,6 @@
                     
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
                 </ol>

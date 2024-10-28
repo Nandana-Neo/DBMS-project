@@ -7,7 +7,7 @@ from .views import (PostListView,
                     # UserPostListView,
                     LikeView,
                     blogpost_list,
-                    get_posts_by_dateListView,
+                    get_posts_by_date,
                     UserPostView
                     )
 from django.views.generic import TemplateView
@@ -25,6 +25,6 @@ urlpatterns = [
 
     # path('events/',TemplateView.as_view(template_name='blog/events.html'),name='events'),
 
-    path('calendar/<str:date>/', get_posts_by_dateListView.as_view(), name='get_posts_by_date'),
+    path('calendar/<str:date>/', get_posts_by_date.as_view(), name='get_posts_by_date'),
     path('api/posts/',blogpost_list,name='blogpost-list')
 ]

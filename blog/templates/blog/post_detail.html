@@ -65,7 +65,7 @@
                     <h2 class="article-title">{{ object.title }}</h2>
                     <p class="article-content">{{ object.content|safe }}</p>
                     {% if user.is_authenticated %}
-                        {% if object.author != user %}
+                        <!-- {% if object.author != user %}
                             <form action="{% url 'like_post' object.pk %}" method="POST">
                                 {% csrf_token %}
                                 {% if already_liked %}
@@ -75,7 +75,7 @@
                                 {% endif %}
                             </form>
                         {% else %}
-                        {% endif %}
+                        {% endif %} -->
                     {% else %}
                     <div class="border-top pt-3">
                         <small class="text-muted">

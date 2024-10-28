@@ -3,7 +3,7 @@
     
     <article class="media content-section d-flex justify-content-between align-items-center" >
       <h2 class="d-flex align-items-center">
-        Add a New Event
+        Events
         
       </h2>
       <a href="{% url 'event-create' %}" class="ml-2 text-decoration-none" style="color: inherit;">
@@ -59,10 +59,4 @@
       {% endif %}
 
     {% endif %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Events</li>
-      </ol>
-    </nav>
 {% endblock content %}

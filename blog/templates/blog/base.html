@@ -159,6 +159,7 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'event-list' %}">Events</a>
                 <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
               </div>
               <!-- Navbar Right Side -->
@@ -203,19 +204,8 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="content-section  sidebar" >
-              <h3>Dive deep</h3>
-              <p class='text-muted'>Know more about our college. Explore various activites.
-                <ul class="list-group">
-                  <a href="{% url 'event-list' %}"><li class="list-group-item list-group-item-light">Events</li></a>
-                  <a href="https://thenitconnect.wordpress.com/2015/06/13/260/"> <li class="list-group-item list-group-item-light">Club Activities</li></a>
-                  <!-- <li class="list-group-item list-group-item-light">Achievements</li>
-                  <li class="list-group-item list-group-item-light">Announcements</li> -->
-                </ul>
-              </p>
-              
-            </div>
-            <div class="content-section  content-cal sidebar">
+            
+            <div class="content-section  content-cal sidebar" style="margin-top :0px;">
               <div id='calendar' class="pt-3 pl-3 pr-3 pb-3"></div>
             </div>
 
@@ -227,11 +217,6 @@
 
       <div class="container">
         <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="{% url 'blog-home' %}" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="{% url 'blog-about' %}" class="nav-link px-2 text-body-secondary">About</a></li>
-          </ul>
           <p class="text-center text-body-secondary">© We@NITC Blog. All rights reserved.</p>
         </footer>
       </div>
