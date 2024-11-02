@@ -1,5 +1,13 @@
 {% extends "blog/base.html"%}
 {% block content%}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'blog-home' %}">Blogs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+    </ol>
+</nav>   
+
     <article class="media content-section d-flex align-items-start" >
 
       <div class="row w-100 mt-2">

@@ -1,6 +1,14 @@
 {% extends "blog/base.html"%}
 {% block content%}
-    
+{% if title != "Events" %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+      </ol>
+    </nav>
+{% endif %}
+
     <article class="media content-section d-flex justify-content-between align-items-center" >
       <h2 class="d-flex align-items-center">
         {{ title }}
@@ -12,6 +20,20 @@
       </a>
     
     </article>
+
+  {% if title == 'Events' %}  
+    <form method="get" action="{% url 'event_search' %}" id="searchForm">
+      <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <select name="type" class="form-select">
+              <option value="all">All</option>
+              <option value="user">Users</option>
+              <option value="event">Events</option>
+          </select>
+          <button type="submit" class="btn btn-outline-secondary">Search Events</button>
+      </div>
+    </form>
+  {% endif %}
     <article class="content-section">
       <div class="container my-4">
         <div class="row">
@@ -58,12 +80,5 @@
       {% endif %}
 
     {% endif %}
-    {% if title != "Events" %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
-      </ol>
-    </nav>
-  {% endif %}
+    
 {% endblock content %}

@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django_ckeditor_5.fields import CKEditor5Field
 # Create your models here.
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = CKEditor5Field(null = True,blank=True, config_name='extends')
     date = models.DateField()
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="organized_events")
 

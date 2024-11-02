@@ -1,6 +1,11 @@
 {% extends "blog/base.html"%}
 {% block content%}
-    
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
+    </ol>
+</nav>   
 <article class="media content-section d-flex justify-content-between align-items-center" >
     <h3 class="d-flex align-items-center">
       Events
@@ -17,7 +22,7 @@
 
       <div class="row w-100 mt-2">
             <div class="col-auto d-flex flex-column align-items-center">
-                <a href="{% url 'user-posts' object.organizer.username %}"><img class="rounded-circle article-img mb-2 " src="{{ object.organizer.profile.image.url }}" style="margin-right: 0%;"></a>
+                <a href="{% url 'user-events' object.organizer.username %}"><img class="rounded-circle article-img mb-2 " src="{{ object.organizer.profile.image.url }}" style="margin-right: 0%;"></a>
                     
                 <div class="btn btn-outline-secondary btn-sm"> {{object.participants.count}} regs</div>
                     
@@ -26,7 +31,7 @@
             <div class="col" style="padding: 0%;">
                 <div class="media-body">
                     <div class="article-metadata d-flex justify-content-between align-items-center">
-                        <a class="mr-2" href="{% url 'user-posts' object.organizer.username %}">
+                        <a class="mr-2" href="{% url 'user-events' object.organizer.username %}">
                             {{ object.organizer.first_name }}
                         </a>
                         <small class="text-muted">{{ object.date|date:"F d, Y" }}</small>
@@ -78,11 +83,6 @@
             </article>
                     {% endif %}
                     
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
-                </ol>
-            </nav>
+            
 
 {% endblock content %}

@@ -1,6 +1,14 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'event-detail' event.id %}" >{{ event.name }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Take attendance</li>
+  </ol>
+</nav>
 <article class="media content-section " >
   <h2>Mark Attendance for {{ event.name }}</h2>
   <form method="post">
@@ -35,11 +43,5 @@
   </form>
   
 </article>
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'event-list' %}">Events</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'event-detail' event.id %}" >{{ event.name }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Take attendance</li>
-  </ol>
-</nav>
+
 {% endblock %}

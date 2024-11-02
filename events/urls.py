@@ -12,6 +12,10 @@ urlpatterns = [
     path('event/<int:pk>/attendance',views.MarkAttendanceView.as_view(),name='attendance'),
     path('event/org/<str:username>',views.EventUserListView.as_view(),name='event-userlist'),
     path('event/reg/<str:username>',views.EventRegListView.as_view(),name='event-reglist'),
+    path('search/event/', views.event_search, name='event_search'),
+    path('user/<str:username>',views.UserEventView, name='user-events'),
+    path('api/posts/',views.event_date_list,name='event-date-list'),
+    path('calendar/<str:date>/', views.get_events_by_date.as_view(), name='get_events_by_date'),
     # path('create/', views.event_create, name='event-create'),
     # path('<int:event_id>/', views.event_detail, name='event-detail')
     

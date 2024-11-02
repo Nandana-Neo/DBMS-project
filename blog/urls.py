@@ -25,6 +25,7 @@ urlpatterns = [
 
     # path('events/',TemplateView.as_view(template_name='blog/events.html'),name='events'),
 
-    path('calendar/<str:date>/', get_posts_by_date.as_view(), name='get_posts_by_date'),
-    path('api/posts/',blogpost_list,name='blogpost-list')
+    path('blogs/calendar/<str:date>/', get_posts_by_date.as_view(), name='get_posts_by_date'),
+    path('blogs/api/posts/',blogpost_list,name='blogpost-list'),
+    path('search/blog/', views.blog_search, name='blog_search'),
 ]
