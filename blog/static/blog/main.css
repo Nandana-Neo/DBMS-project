@@ -172,6 +172,8 @@ body{
 
 .fc-today-button{
   background-color: #004359 !important;
+  margin-bottom: 1rem !important;
+  outline: 1px solid red !important;
 }
 
 .fc-day-event {

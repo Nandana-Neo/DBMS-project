@@ -34,7 +34,6 @@
                         <a class="mr-2" href="{% url 'user-events' object.organizer.username %}">
                             {{ object.organizer.first_name }}
                         </a>
-                        <small class="text-muted">{{ object.date|date:"F d, Y" }}</small>
                         {% if object.organizer == user %}
                         <div>
                             <a href="{% url 'event-update' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1" > Update</a>
@@ -43,17 +42,23 @@
                         {% endif %}
                     </div>
                     <h2 class="article-title">{{ object.name }}</h2>
-                    <p class="article-content">{{ object.description|safe }}</p>
-                    
+                    <p class="article-content">
+                        {{ object.description|safe }}
+                        <br>
+                        <strong>
+                        DATE : {{ object.date|date:"F d, Y" }}
+                        </strong>
+                    </p>
                     {% if user.is_authenticated %}
                         {% if user != object.organizer %}
                             {% if reg %}
-                                <div class="btn btn-primary btn-sm"> You are already registered for this event</div> 
+                                <div class="text-muted"> You are already registered for this event</div> 
                             {% else %}
                                 <form action="{% url 'event-register' event.pk %}" method="post">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary btn-sm">Register for Event</button>
+                                    <button type="submit" class="btn btn-outline-info btn-outline-custom">Register</button>
                                 </form>
+                                <small class="text-muted"> Once registered, you cannot un-register!</small> 
                             {% endif %}
                             </div>
                         </div>
