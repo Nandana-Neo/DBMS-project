@@ -227,7 +227,7 @@ def blog_search(request):
         users = User.objects.filter(Q(username__icontains=query) | Q(first_name__icontains=query))
     
     if search_type == 'post' or search_type == 'all':
-        posts = Post.objects.filter(title__icontains=query)
+        posts = Post.objects.filter(title__icontains=query).order_by('-date_posted')
 
     return render(request, 'search/blog_search_results.html', {'users': users,
                                                                 'posts': posts,

@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('',include('blog.urls')),#easy to go to app blog in one place
     path('events/',include('events.urls')),
     path('register/',users_views.register,name='register'),

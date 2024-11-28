@@ -181,12 +181,16 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav ml-auto">
-                  
+                    {% if user.is_authenticated %}
+                      {% if user.is_superuser %}
+                        <a class="nav-item nav-link" href="/admin/">Admin</a>
+                      {% endif %}
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Add</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {% if request.resolver_match.url_name == 'post-create' %}active{% endif %}" href="{% url 'post-create' %}">Post</a></li>
+                            <li><a class="dropdown-item {% if request.resolver_match.url_name == 'post-create' %}active{% endif %}" href="{% url 'post-create' %}">Blog</a></li>
                             
                             <li><a class="dropdown-item {% if request.resolver_match.url_name == 'event-create' %}active{% endif %}" href="{% url 'post-create' %}">Event</a></li>
                           </ul>
